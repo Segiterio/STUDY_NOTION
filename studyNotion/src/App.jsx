@@ -54,7 +54,7 @@ const App = () => {
         <Route path="/login/Reset-Password-Token" element={<OpenRoute><ResetPasswordToken /></OpenRoute>} />
 
         <Route path="/signup" element={<OpenRoute><SignUpPage /></OpenRoute>} />
-        <Route path="/signup/otp" element={<OpenRoute><Otpage /></OpenRoute>} />
+        <Route path="/signup/otp" element={<OpenRoute><Otpage /></OpenRoute>}/>
 
 
         <Route element={<Dashboard />}>

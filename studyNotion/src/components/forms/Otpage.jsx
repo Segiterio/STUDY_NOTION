@@ -22,7 +22,7 @@ const Otpage = () => {
             const response = await apiConnector("POST", endPoints.USER_SIGNUP, { firstName, lastName, email, contactNumber, password, confirmPassword, accountType, otp });
             toast.dismiss(toastId);
             // this condition only for 404 not found i think because 404 error found in fetch api
-            if (response.statusText == "OK") {
+            if (response.status == 200) {
                 toast.success(response.data.message)
                 navigate("/login");
             }
