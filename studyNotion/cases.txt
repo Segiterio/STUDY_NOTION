@@ -1,0 +1,15 @@
+try to handle 
+
+{
+ 1. what happened if user is already present in database but try to signup.
+
+
+}
+
+
+handled cases
+{
+
+
+    
+}
