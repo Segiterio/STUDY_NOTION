@@ -13,8 +13,6 @@ export const Navbar = () => {
     const {token} = useSelector(state => state.auth);
     const location = useLocation() ;
     const [subLinks , setSubLinks] = useState([]);
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
    //  const dispatch = useDispatch();
 
    async function getAllCategories() 
@@ -33,22 +31,6 @@ export const Navbar = () => {
     {
        getAllCategories();
     },[]);
-     
-   //  async function getUserDetails()
-   //  {
-   //     try{
-   //       const result = await axios.get("http://localhost:4000/api/v1/profile/getUserDetails",{
-   //         withCredentials:true
-   //       });
-   //       console.log(result);
-   //       dispatch(setUserDetails(result.data.data));
-   //     }
-   //     catch(error) 
-   //     {
-   //        console.log("Error in fetch user Details", error);
-   //     }
-   //  } 
-
     const matchRoute = (currentLocation) =>
     {
          return currentLocation === location.pathname;

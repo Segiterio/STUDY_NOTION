@@ -1,8 +1,8 @@
 import React from 'react'
 import Codes from "../../data/countrycode.json"
-import {toast} from "react-toastify"
 
-const ContactForm = ({register,handleSubmit,errors}) => {
+
+const ContactForm = ({register,handleSubmit}) => {
 
     const formData = (data) => {
         console.log(data);

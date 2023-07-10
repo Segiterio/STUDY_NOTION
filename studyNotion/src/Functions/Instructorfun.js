@@ -1,9 +1,7 @@
-
-import { useSelector } from "react-redux";
 import { apiConnector } from "../axios/instance";
 import { coursePoints,sectionPoints } from "../axios/services/apis";
 import { toast } from "react-toastify";
-import { setCourse,setEditCourse,setPaymentLoading,setLoading} from "../Redux/Slices/course";
+import { setCourse,setLoading} from "../Redux/Slices/course";
 import { setEditSectionName,setSectionName } from "../Redux/Slices/section";
 
 export const getCourseCategories = async() =>
@@ -25,7 +23,7 @@ export const addNewSectionFun = async(data,token,course,dispatch,editSectionName
      let response;
      if (editSectionName) {
        if (sectionName != data.sectionName) {
-         response = await apiConnector("POST", "http://localhost:4000/api/v1/course/updateSection", data, {
+         response = await apiConnector("POST",sectionPoints.UPDATE_SECTION, data, {
            Authorization: `Bearer ${token}`
          })
          dispatch(setCourse(response.data.data))
@@ -37,7 +35,7 @@ export const addNewSectionFun = async(data,token,course,dispatch,editSectionName
        }
      }
      else {
-       response = await apiConnector("POST", "http://localhost:4000/api/v1/course/addSection", data, {
+       response = await apiConnector("POST", sectionPoints.CREATE_SECTION, data, {
          Authorization: `Bearer ${token}`
        })
        dispatch(setCourse(response.data.updatedCourse))

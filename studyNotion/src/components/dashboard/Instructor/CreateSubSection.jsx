@@ -5,14 +5,14 @@ import { useForm } from 'react-hook-form'
 import { apiConnector } from '../../../axios/instance'
 import { toast } from 'react-toastify'
 import { useDispatch, useSelector } from 'react-redux'
-import { setCourse, setStep } from '../../../Redux/Slices/course';
+import { setCourse} from '../../../Redux/Slices/course';
 import { subSectionPoints } from '../../../axios/services/apis'
-import axios from 'axios'
+
 
 const CreateSubSection = ({ setSubSectionModal, mode , sectionId ,course}) => {
     const dispatch = useDispatch();
     const {subSectionId} = useSelector(state => state.subSection);
-    const { register, formState: { error }, setValue, getValues, handleSubmit } = useForm();
+    const { register, setValue, handleSubmit } = useForm();
     const [thumbnail, setThumbnail] = useState(null);
     const [previewSource, setPreviewSource] = useState(null);
     const {token} = useSelector(state => state.auth);
@@ -62,13 +62,13 @@ const CreateSubSection = ({ setSubSectionModal, mode , sectionId ,course}) => {
             { 
                 formData.append("subSectionId", subSectionId);
 
-                response = await apiConnector("POST", "http://localhost:4000/api/v1/course/updateSubSection",formData, {
+                response = await apiConnector("POST",subSectionPoints.UPDATE_SUBSECTION_API,formData, {
                   Authorization: `Bearer ${token}`
                 })
               }
             else{
               formData.append("sectionId", sectionId);
-              response = await apiConnector("POST", "http://localhost:4000/api/v1/course/addSubSection",formData, {
+              response = await apiConnector("POST", subSectionPoints.ADD_SUBSECTION_API,formData, {
                 Authorization: `Bearer ${token}`
               })
             }

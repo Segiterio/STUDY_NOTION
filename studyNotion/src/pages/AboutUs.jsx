@@ -8,7 +8,6 @@ import FoundingStory from "../assets/Images/FoundingStory.png"
 import { data } from "../data/aboutData"
 import { girdData } from '../data/girdData';
 import { useForm } from "react-hook-form"
-import { MdKeyboardArrowDown } from "react-icons/md"
 import CLXbutton from "../components/cors/HomePage/CLXbutton"
 import Footer from '../components/cors/Footer';
 import ContactForm from '../components/forms/ContactForm';

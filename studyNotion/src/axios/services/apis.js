@@ -27,6 +27,8 @@ export const coursePoints ={
            GET_INSTRUCTOR_COURSES :BASE_URL + "api/v1/course/getInstructorCourses",
            DELETE_COURSE_API : BASE_URL + "api/v1/course/deleteCourse",
            GET_COURSE_DETAILS : BASE_URL + "api/v1/course/getCourseDetails",
+           EDIT_COURSE_API : BASE_URL + "api/v1/course/editCourse",
+           CREATE_COURSE_API : BASE_URL +"api/v1/course/createCourse" 
            
 }
 
@@ -36,4 +38,6 @@ export const sectionPoints = {
 }
 export const subSectionPoints = {
        GET_SUBSECTION_DETAIL : BASE_URL + "api/v1/course/getSubSectionDetail",
+       UPDATE_SUBSECTION_API : BASE_URL + "api/v1/course/updateSubSection",
+       ADD_SUBSECTION_API : BASE_URL + "api/v1/course/addSubSection"
 }

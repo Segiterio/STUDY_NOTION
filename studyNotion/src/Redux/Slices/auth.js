@@ -27,7 +27,6 @@ const authSlice = createSlice({
         }
     }
 })
-// akashkumar0204625@outlook.com
 
 export const {setauth,setUserDetails,setLoading} = authSlice.actions;
 

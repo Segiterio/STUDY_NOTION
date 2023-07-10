@@ -6,7 +6,7 @@ import { Navbar } from './components/cors/Navbar';
 import { AboutUs } from "./pages/AboutUs"
 import SignUpPage from './pages/SignUpPage';
 import Otpage from './components/forms/Otpage';
-import { Slide, ToastContainer } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import SetPassword from './components/forms/SetPassword';
 import ResetPasswordToken from './components/forms/ResetPasswardToken';

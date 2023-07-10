@@ -41,8 +41,8 @@ const ContactUs = () => {
                     </div>
                   
                     <div className='flex flex-col gap-4 p-5 w-3/5 border border-richblack-700 rounded-xl'>
-                            <h2 className='text-3xl font-semibold text-richblack-5'>Got a Idea? We’ve got the skills. Let’s team up</h2>
-                            <p className='text-richblack-300'>Tall us more about yourself and what you’re got in mind.</p>
+                            <h2 className='text-3xl font-semibold text-richblack-5'>Got a Idea? We've got the skills. Let's team up</h2>
+                            <p className='text-richblack-300'>Tall us more about yourself and what you're got in mind.</p>
 
                         <ContactForm register={register} handleSubmit={handleSubmit} reset={reset} errors={errors} />
                     </div>

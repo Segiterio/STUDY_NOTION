@@ -28,7 +28,7 @@ const cartSlice = createSlice({
             localStorage.setItem("totalItem",state.totalItem);
             
         },
-        ResetCart(state,action)
+        ResetCart(state)
         {
              state.cart = null;
              state.total = 0;

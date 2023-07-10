@@ -3,14 +3,13 @@ import { useEffect, useState, useRef } from 'react';
 import { useForm } from 'react-hook-form'
 import { getCourseCategories } from '../../../Functions/Instructorfun';
 import { RxCross2 } from "react-icons/rx"
-
 import { useDispatch, useSelector } from 'react-redux';
-import axios from 'axios';
 import { apiConnector } from '../../../axios/instance';
 import DropZone from './DropZone';
 import { setCourse, setStep,resetCourseState } from '../../../Redux/Slices/course';
 import { toast } from 'react-toastify';
 import {GrAddCircle} from "react-icons/gr";
+import { coursePoints } from '../../../axios/services/apis';
 
 const CIForm = () => {
     const [tag, setTags] = useState([]);
@@ -24,7 +23,7 @@ const CIForm = () => {
 
     const { token } = useSelector(state => state.auth);
     const dispatch = useDispatch();
-    const { register, handleSubmit, formState: { errors }, setValue, getValues, watch,reset } = useForm({
+    const { register, handleSubmit, setValue, getValues,reset } = useForm({
         defaultValues:{
             courseName:"",
             courseDescription:"",
@@ -90,7 +89,7 @@ const CIForm = () => {
                if(isFromUpdated())
                {
                 formdata.append("courseId", course._id);
-                response = await apiConnector("PUT","http://localhost:4000/api/v1/course/editCourse", formdata ,{
+                response = await apiConnector("PUT",coursePoints.EDIT_COURSE_API, formdata ,{
                         Authorization :`Bearer ${token}`
                      })
                }
@@ -103,18 +102,10 @@ const CIForm = () => {
             }
             else{
                 
-                response = await apiConnector("POST", "http://localhost:4000/api/v1/course/createCourse", formdata, {
+                response = await apiConnector("POST", coursePoints.CREATE_COURSE_API, formdata, {
                     Authorization: `Bearer ${token}`
                 })
             }  
-                //  :  !isFromUpdated() &&
-     
-            // const response = await axios.post("http://localhost:4000/api/v1/course/createCourse",formdata,{
-            //     headers:{
-            //         Authorization:`Bearer ${token}`
-            //     }
-            // })
-
             console.log("respoanse in cret course", response);
             toast.dismiss(toastId);
             toast.success(response?.data?.message)
@@ -276,5 +267,3 @@ const CIForm = () => {
     )
 }
 export default CIForm
-
-/* "{"price":"264","category":"6474439f5a016506e3b3ec24","courseName":"Maia Madden","courseDescription":"Dolor veniam harum ","instructions":"[\"Sed qui in debitis v\"]","tag":"[\"Quia doloremque susc\"]","status":"DRAFT","whatWillYouLearn":"Quidem lorem porro i","thumbnailImage":{"path":"Screenshot (18).png"}}" */

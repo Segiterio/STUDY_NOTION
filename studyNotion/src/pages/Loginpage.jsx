@@ -1,6 +1,6 @@
 import React from 'react'
 import Templete from '../components/forms/Templete'
-import LoginImage from "../assets/Images/Login.webp"
+import LoginImage from "../assets/Images/login.webp"
 
  const Loginpage = () => {
   return (
