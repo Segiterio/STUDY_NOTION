@@ -47,7 +47,7 @@ const Signup = () => {
             const response = await apiConnector("POST", endPoints.SEND_OTP, { email });
             console.log(response);
             toast.dismiss(toastId);
-            if (response.statusText == "OK") {
+            if (response.status == 200) {
                 toast.success("OTP send Successfully");
                 navigate("/signup/otp");
             }
