@@ -23,7 +23,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
 	cors({
-		origin:false,
+		origin:true,
 		credentials:true,
 	})
 )
