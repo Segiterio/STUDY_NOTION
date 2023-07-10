@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { FaArrowRight } from "react-icons/Fa"
+import { FaArrowRight } from "react-icons/fa"
 import Highlighted from "../components/cors/HomePage/Highlighted";
 import CLXbutton from "../components/cors/HomePage/CLXbutton";
 import banner from "../assets/Images/banner.mp4"
