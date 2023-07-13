@@ -1,6 +1,5 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import Footer from '../components/cors/Footer';
 import ContactForm from '../components/forms/ContactForm';
 import {IoIosChatboxes,IoIosCall} from "react-icons/io";
 import {ImEarth} from 'react-icons/im'
@@ -48,8 +47,6 @@ const ContactUs = () => {
                     </div>
                 </div>
             </div>
-           <Footer />
-          
         </div>
     )
 }

@@ -9,7 +9,6 @@ import { TimeLine } from '../components/cors/HomePage/TimeLine';
 import { Learings } from '../components/cors/HomePage/Learings';
 import Instructor from "../assets/Images/Instructor.png"
 import ExploreCards from '../components/cors/HomePage/ExploreCards';
-import Footer from '../components/cors/Footer';
 
 export const Home = () => {
 
@@ -162,7 +161,7 @@ export const Home = () => {
 
         <div className='py-20 flex flex-col sm:flex-row gap-10'>
           <div className='sm:w-1/2 shadow-[-20px_-20px] shadow-white'>
-            <img src={Instructor} alt="Instructor" />
+            <img src={Instructor} alt="Instructor" loading='lazy'/>
           </div>
           <div className='flex flex-col sm:w-1/2  justify-evenly'>
 
@@ -192,10 +191,6 @@ export const Home = () => {
         </div>
 
       </div>
-
-      {/* Footer */}
-      <Footer />
-
     </div>
   )
 }

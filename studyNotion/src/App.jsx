@@ -27,6 +27,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { CheckToken } from './Functions/Userfun';
 import Catalog from './components/cors/Catalog';
 import CourseDetails from './components/cors/CourseDetails';
+import Contain from './Contain';
 const App = () => {
   const {token} = useSelector(state => state.auth);
   const navigate = useNavigate();
@@ -42,17 +43,17 @@ const App = () => {
     <div>
       <Navbar />
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path="/about" element={<AboutUs />} />
-        <Route path="/contact" element={<ContactUs />} />
-        <Route path="/login" element={<OpenRoute><Loginpage /></OpenRoute>} />
-
-        <Route path="/catalog/courses/:categoryId" element={<Catalog />}/>
-        <Route path="/catalog/courses/:courseName/:courseId" element={<CourseDetails/>} />
+        <Route path='/' element={<Contain/>}>
+          <Route index element={<Home />} />
+          <Route path="/about" element={<AboutUs />} />
+          <Route path="/contact" element={<ContactUs />} />
+          <Route path="/catalog/courses/:categoryId" element={<Catalog />}/>
+          <Route path="/catalog/courses/:courseName/:courseId" element={<CourseDetails/>} />
+        </Route>
 
         {/* reset password token ke openRoute me Sanka hai */}
+        <Route path="/login" element={<OpenRoute><Loginpage /></OpenRoute>} />
         <Route path="/login/Reset-Password-Token" element={<OpenRoute><ResetPasswordToken /></OpenRoute>} />
-
         <Route path="/signup" element={<OpenRoute><SignUpPage /></OpenRoute>} />
         <Route path="/signup/otp" element={<OpenRoute><Otpage /></OpenRoute>}/>
 
@@ -81,7 +82,7 @@ const App = () => {
         <Route path={`/update-password/${location.pathname.split("/").at(-1)}`} element={<SetPassword />} />
         <Route path={"*"} element={<ErrorPage />} />
       </Routes>
-      <ToastContainer position='top-center' autoClose={1000}  />
+      <ToastContainer autoClose={2000}  />
     </div>
   )
 }

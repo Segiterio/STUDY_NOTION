@@ -27,10 +27,7 @@ exports.createCategory = async (req, res) => {
 
 exports.showAllCategories = async (req, res) => {
     try {
-        const allCategorys = await Category.find(
-            {},
-            { name: true, description: true }
-        );
+        const allCategorys = await Category.find();
         res.status(200).json({
             success: true,
             data: allCategorys,
@@ -62,11 +59,15 @@ exports.categoryPageDetails = async (req, res) => {
         }
         //get coursesfor different categories
         const differentCategories = await Category.find({
-            _id: { $ne: categoryId },
+            _id: { $ne: categoryId } 
         })
             .populate("courses")
             .exec();
-
+        
+            if(!differentCategories)
+            {
+                // differentCategories=null;
+            }
         //get top 10 selling courses
         //HW - write it on your own
 

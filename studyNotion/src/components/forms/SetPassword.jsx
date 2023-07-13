@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { AiFillEye, AiOutlineArrowLeft, AiFillEyeInvisible } from 'react-icons/ai';
-import { Link, useLocation} from 'react-router-dom';
+import { Link, useLocation, useParams} from 'react-router-dom';
 import { endPoints } from '../../axios/services/apis';
 import { apiConnector } from '../../axios/instance';
 import { toast } from 'react-toastify';
@@ -18,8 +18,8 @@ const SetPassword = () => {
     e.preventDefault();
     const toastId = toast.loading("Please wait...");
     try {
-      const token = location.pathname.split("/").at(-1);
-      const response = await apiConnector("POST", endPoints.FORGET_PASSWORD, {password, confirmPassword, token });
+      const {tokenEmail} = useParams();
+      const response = await apiConnector("POST", endPoints.FORGET_PASSWORD, {password, confirmPassword, token:tokenEmail });
       console.log(response);
       toast.dismiss(toastId);
       toast.success("Password reset successfull");

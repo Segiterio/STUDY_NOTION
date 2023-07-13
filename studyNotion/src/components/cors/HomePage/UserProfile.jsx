@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import { VscSignOut } from 'react-icons/vsc'
 
 
-export const UserProfile = () => {
+export const UserProfile = ({Link}) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [showDropDown, setShowDropDown] = useState(false)
@@ -15,8 +15,8 @@ export const UserProfile = () => {
   console.log("user details in userProfile", user);
   return (
     <div className='flex gap-2 items-center text-white'>
-      {user?.accountType == "Student" && <RiShoppingCartLine />}
-      <img src={user?.image} alt={user?.firstName} className='w-5 h-5 rounded-full object-cover' />
+      {user?.accountType == "Student" && <Link to="/dashboard/cart" ><RiShoppingCartLine /></Link>}
+      <img src={user?.image} alt={user?.firstName} className='w-5 h-5 rounded-full object-cover' loading='lazy' />
       <div className='relative'>
         <AiFillCaretDown  onClick={() => {
           setShowDropDown(!showDropDown);

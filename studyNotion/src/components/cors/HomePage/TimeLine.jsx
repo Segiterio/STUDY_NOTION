@@ -38,7 +38,7 @@ export const TimeLine = () => {
                             <div className='flex gap-10 sm:gap-20 '>
                                 <div className='w-8 h-8 sm:w-14 sm:h-14 flex justify-center my-auto items-center rounded-full bg-white shadow-md relative '>
                                 {index < timeLineData.length-1 && <div className='border-l-2 border-dashed h-12 sm:h-8 absolute -bottom-14 sm:-bottom-10 border-richblack-400 '></div>}
-                                    <img src={item.logo} className='w-1/3' alt={item.heading} />
+                                    <img src={item.logo} className='w-1/3' alt={item.heading} loading='lazy'/>
                                 </div>
                                 <div>
                                     <h3 className='text-lg font-bold'>{item.heading}</h3>
@@ -56,7 +56,7 @@ export const TimeLine = () => {
                 <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full bg-blue-300 h-[70%] rounded-[350px/180px] blur-2xl '>
                 </div>
 
-                <img src={TimelineImage} alt="Time Line didi" className='shadow-[20px_20px] relative  shadow-white' />
+                <img src={TimelineImage} alt="Time Line didi" className='shadow-[20px_20px] relative  shadow-white' loading='lazy' />
 
                 <div className='absolute flex w-[80%] justify-around left-1/2 -translate-x-1/2 -translate-y-1/2 bg-caribbeangreen-700 md:p-10 p-2'>
                     <div className='flex items-center md:gap-5 gap-1'>

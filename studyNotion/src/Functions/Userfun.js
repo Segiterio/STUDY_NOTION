@@ -1,9 +1,13 @@
 import { setProfile } from "../Redux/Slices/user";
+import razImg from "../assets/Logo/razorpay-icon.png"
 import { setauth } from "../Redux/Slices/auth";
-import { profilePointes,categories, coursePoints } from "../axios/services/apis";
+import { profilePointes,categories, coursePoints,razorpayPoints } from "../axios/services/apis";
 import { endPoints } from "../axios/services/apis";
 import { apiConnector } from "../axios/instance";
 import {toast} from "react-toastify";
+import {ResetCart} from "../Redux/Slices/cart"
+import {setPaymentLoading} from "../Redux/Slices/course"
+import { setLoading } from "../Redux/Slices/auth";
 
 export const logOut = (dispatch,navigate) =>
           {  //set profile data null
@@ -95,12 +99,13 @@ export const GetUserEnrolledCourses = async(token) =>
     }
 }
 
-export const getCategoryPageDetails = async(categoryId,setCourseData) =>
-{
+export const getCategoryPageDetails = async(categoryId,setCourseData,dispatch) =>
+{   dispatch(setLoading(true))
    try{
        const response = await apiConnector("POST",categories.GET_COURSE_BY_CATEGORY_ID, {categoryId})
        console.log("response of Course id",response)
        setCourseData(response.data.data);
+       dispatch(setLoading(false));
    }
    catch(error)
     {
@@ -120,3 +125,126 @@ export const getCategoryPageDetails = async(categoryId,setCourseData) =>
        console.log("error in course category by Id", error)
     }
  }
+
+
+ //Razor pay functions
+
+ function LoadScript(src) {
+    return new Promise((resolve,reject) =>{
+         const script = document.createElement("script");
+         script.src = src;
+         script.onload = () => {
+             resolve(true);
+         }
+         script.onerror = () =>
+         {
+             resolve(false);
+         }
+         document.body.appendChild(script);
+    })
+ }
+
+ // buy coures 
+
+ export async function buyCourse(token,coursesId,userDetails,navigate,dispatch)
+ { const toastId =  toast.loading("Buying course...");
+    try{
+        const res = await LoadScript("https://checkout.razorpay.com/v1/checkout.js");
+
+        if(!res)
+        {
+           toast.error("RazorPay SDK failed to load");
+           return;
+        }
+        //initiate order
+
+        const orderResponse = await apiConnector("POST",razorpayPoints.CAPTURE_PAYMENT,{
+         coursesId
+        },{
+          Authorization: `Bearer ${token}`
+        });
+        if(!orderResponse)
+        {
+           throw new Error(orderResponse.data.message);
+        }
+      //   console.log("order response",orderResponse)
+
+        const options = {
+            key:import.meta.env.VITE_RAZORPAY_KEY,
+            currency:orderResponse.data.data.currency,
+            amount:orderResponse.data.data.amount,
+            order_id:orderResponse.data.data.id,
+            name:"Akash StudyNotion",
+            description:"Thanks you for purchasing the course",
+            image:razImg, 
+            prefill:{
+                name:userDetails.firstName,
+                email:userDetails.email
+            },
+            handler:function(response) 
+            {   console.log("inside handler of payment ", response);
+                sendPaymentSuccessEmail(response,orderResponse.data.data.amount/100,token);
+
+                verifyPayment({...response,coursesId},token,navigate,dispatch)
+            }
+        }
+        // open payment modal window
+        const payment = new window.Razorpay(options);
+        payment.open();
+        payment.on("payment.failed" , function(response) {
+        toast.error("oops , payment failed");
+        console.log("payment error",response.error)
+      })
+
+        toast.dismiss(toastId);
+
+    }catch(error)
+      {  toast.dismiss(toastId);
+         console.log("Payment api Error ...",error);
+         toast.error(error.response.data.message);
+    }
+ }
+
+ // send payment successfull email function
+
+ async function sendPaymentSuccessEmail(response,amount,token)
+ {
+    try{
+      await apiConnector("POST",razorpayPoints.SEND_SUCCESSFUL_PAYMENT_EMAIL,{
+         orderId:response.razorpay_order_id,
+         amount,
+         paymentId:response.razorpay_payment_id
+      },{
+         Authorization:`Bearer ${token}`
+      })
+    }catch(error)
+      {
+        console.log("Payment succes email error", error);
+    }
+ }
+
+async function verifyPayment(bodyData,token,navigate,dispatch)
+   {  
+      dispatch(setLoading(true))
+      const toastId = toast.loading("Verifying payment ...");
+   dispatch(setPaymentLoading(true))
+       try{
+         const response =  await apiConnector("POST",razorpayPoints.VERIFY_SIGNATURE,bodyData,{
+            Authorization:`Bearer ${token}`
+         })
+         if(!response.data.success)
+           {
+             throw new Error(response.data.success);
+         }
+         toast.success("Payment successful, your are added to the course")
+         navigate("/dashboard/enrolled-courses");
+         dispatch(setLoading(false));
+         dispatch(ResetCart());
+     }catch(error)
+       {
+         console.log("payment verify error ...",error)
+         toast.error("could not verify payment");
+     }
+     toast.dismiss(toastId)
+     dispatch(setPaymentLoading(false));
+}

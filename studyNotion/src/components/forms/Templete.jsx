@@ -20,8 +20,8 @@ const Templete = ({heading,description,subdescription,formType,image}) => {
     </div>
        
             <div className="relative border place-self-center max-w-sm">
-                <img src={Frame} alt="Frame" className="absolute top-3 left-3" />
-                <img className="relative" src={image} alt={`${image}`} />
+                <img src={Frame} alt="Frame" className="absolute top-3 left-3" loading='lazy' />
+                <img className="relative" src={image} alt={`${image}`} loading='lazy' />
             </div>
         </div>
     </div>

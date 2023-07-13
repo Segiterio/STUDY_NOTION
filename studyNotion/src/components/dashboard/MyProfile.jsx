@@ -11,7 +11,7 @@ const MyProfile = () => {
       <div className='flex mt-5 flex-col gap-10'>
         <div className='flex justify-between items-center gap-2 bg-richblack-800 p-5 rounded-lg border border-richblack-700'>
           {/* profile image */}
-          <div><img src={user?.image} alt={user?.firstName} className='w-16 h-16 object-cover rounded-full' />
+          <div><img src={user?.image} alt={user?.firstName} className='w-16 h-16 object-cover rounded-full' loading='lazy'/>
           </div>
           <div className='flex-grow '>
             <h2 className='text-lg text-richblack-5 font-semibold'>{user?.additionalDetails?.displayName || user?.firstName + " " + user?.lastName}</h2>

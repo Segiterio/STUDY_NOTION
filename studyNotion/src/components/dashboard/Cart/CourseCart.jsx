@@ -13,11 +13,11 @@ const CourseCart = () => {
         <div className='text-white flex flex-col gap-3'>
             {
                 cart.map((course) => (
-                    <div key={course._id} className='gap-6 border-t border-richblack-500 py-4 grid grid-cols-[.6fr_1fr_.4fr]  '>
-                        <div><img src={course?.thumbnail} alt={course?.title} className='w-40 aspect-video overflow-clip object-cover rounded-md border border-richblack-700'/></div>
+                    <div key={course._id} className='gap-6 border-t border-richblack-500 py-4 grid grid-cols-[.6fr_1fr_.4fr] items-center '>
+                        <div><img src={course?.thumbnail} loading='lazy' alt={course?.title} className='object-cover rounded-md border border-richblack-700'/></div>
                         <div className='flex flex-col justify-around'>
 
-                            <p className='text-lg font-bold text-richblack-25'>{course?.courseDescription}</p>
+                            <p className='text-lg font-bold text-richblack-25'>{course?.courseDescription.substring(0,40)} ...</p>
                             <p className='text-richblack-200'>{course?.courseName}</p>
                             <div className='flex items-center gap-1'>
                                 <span className='text-yellow-100'>{4.8}</span>

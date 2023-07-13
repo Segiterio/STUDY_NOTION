@@ -62,7 +62,7 @@ const Settings = () => {
     <div className='flex flex-col gap-4 my-5'>
       <h2 className='text-3xl font-semibold text-richblack-5'>Edit Profile</h2>
       <div className='flex bg-richblack-800 gap-5 p-4 rounded-lg border border-richblack-700 '>
-        <img src={previewSource || user?.image} alt={`profile img`} className=' w-16 h-16 rounded-full object-cover' />
+        <img src={previewSource || user?.image} alt={`profile img`} className=' w-16 h-16 rounded-full object-cover' loading='lazy' />
         <div className='flex flex-col justify-evenly'>
           <p className='text-richblack-5'>Change Profile Picture</p>
           <form className='flex gap-2' autoComplete='on' onSubmit={async (e) => {

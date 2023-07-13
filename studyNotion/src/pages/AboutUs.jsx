@@ -9,7 +9,6 @@ import { data } from "../data/aboutData"
 import { girdData } from '../data/girdData';
 import { useForm } from "react-hook-form"
 import CLXbutton from "../components/cors/HomePage/CLXbutton"
-import Footer from '../components/cors/Footer';
 import ContactForm from '../components/forms/ContactForm';
 
 
@@ -38,7 +37,9 @@ export const AboutUs = () => {
             </div>
 
             <div className='flex justify-between relative top-12'>
-              <img src={aboutus1} alt="about1" /><img src={aboutus2} alt="about2" /><img src={aboutus3} alt="about3" />
+              <img src={aboutus1} alt="about1" loading='lazy'/>
+              <img src={aboutus2} alt="about2"  loading='lazy'/>
+              <img src={aboutus3} alt="about3" loading='lazy'/>
             </div>
 
           </div>
@@ -72,7 +73,7 @@ export const AboutUs = () => {
             </div>
             <div className='relative right-12 p-4'>
               <div className='absolute w-56 aspect-video  bg-gradient-to-tr from-pink-500 to-pink-50 top-5 left-1 rounded-[140px/80px] blur-2xl'></div>
-              <img src={FoundingStory} alt="FoundingStory" className='relative' />
+              <img src={FoundingStory} alt="FoundingStory" className='relative' loading='lazy'/>
 
             </div>
           </div>
@@ -190,7 +191,6 @@ export const AboutUs = () => {
           </div>
         </div>
       </section>
-      <Footer />
     </div>
   )
 }

@@ -41,3 +41,9 @@ export const subSectionPoints = {
        UPDATE_SUBSECTION_API : BASE_URL + "api/v1/course/updateSubSection",
        ADD_SUBSECTION_API : BASE_URL + "api/v1/course/addSubSection"
 }
+
+export const  razorpayPoints = {
+        CAPTURE_PAYMENT : BASE_URL + "api/v1/payment/capturePayment",
+        VERIFY_SIGNATURE : BASE_URL + "api/v1/payment/verifyPayment",
+        SEND_SUCCESSFUL_PAYMENT_EMAIL : BASE_URL + "api/v1/payment/sendPaymentSuccessMail"
+}

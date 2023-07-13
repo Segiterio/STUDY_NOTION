@@ -54,7 +54,7 @@ const DropZone = ({label, previewSource, video,setPreviewSource,setThumbnail}) =
                         (<div >
                            { video ? (<video className='object-cover' 
                           src={previewSource} ></video>):
-                          <img src={previewSource} alt="choose image" className='object-cover' />}
+                          <img src={previewSource} alt="choose image" className='object-cover' loading='lazy'/>}
                         </div>)
                     }
                 </div>

@@ -18,9 +18,9 @@ export const Learings = () => {
             </div>
             {/* images  */}
             <div className='flex flex-col sm:flex-row py-5 items-center'>
-                <img src={Know} alt="Know your progress" className=''/>
-                <img src={Compare} alt="compare with others"  />
-                <img src={Plan} alt="Plan your lessons" className=''/>
+                <img src={Know} alt="Know your progress" className='' loading='lazy'/>
+                <img src={Compare} alt="compare with others" loading='lazy' />
+                <img src={Plan} alt="Plan your lessons" className='' loading='lazy'/>
             </div>
             {/* button  */}
             <CLXbutton active={true} go="/">Learn more</CLXbutton>

@@ -1,13 +1,13 @@
 import React from 'react'
 import { sidebarLinks } from '../../data/dashboard-links'
 import SideBarLink from './SideBarLink'
-import { useSelector , useDispatch} from 'react-redux'
+import { useSelector } from 'react-redux'
 import { VscSignOut } from 'react-icons/vsc'
 const SideBar = ({setLogModal}) => {
     const user = useSelector(state => state.profile);
     
     return (
-        <div className='sticky top-8'>
+        <div>
             {
                 sidebarLinks.map((link) => (
                     // !link.type if link.type is undefined return that element
@@ -16,8 +16,8 @@ const SideBar = ({setLogModal}) => {
                 )
                 )
             }
-            <div className=' h-[2px] bg-richblack-700 self-center my-2'></div>
-            {/* add setting and logout */}
+            <div className=' h-[2px] bg-richblack-700 my-2'></div>
+            {/* add setting and logout :DONE*/}
             <div className='flex flex-col gap-2 '>
             <SideBarLink link={{
             name:"Settings",

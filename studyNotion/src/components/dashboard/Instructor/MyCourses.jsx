@@ -59,11 +59,11 @@ const MyCourses = () => {
 
                          <div className='grid grid-cols-2 gap-4 '>
                          <div className=''>
-                           <img src={course?.thumbnail} alt={course?.title} className='rounded-md object-cover' />
+                           <img src={course?.thumbnail} alt={course?.title} className='rounded-md object-cover' loading='lazy'/>
                            </div>
                            <div className='flex flex-col justify-between '>
                            <h2 className='text-xl'>{course.courseName}</h2>
-                          <p className='text-richblack-100 font-normal text-sm'>{course.courseDescription}</p>
+                          <p className='text-richblack-100 font-normal text-sm'>{course.courseDescription.substring(0,80)+ "..."}</p>
                           <div className='text-richblack-100 font-normal text-sm'>
                             {`Created : $`}
                           </div>

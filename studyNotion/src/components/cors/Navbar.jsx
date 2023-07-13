@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useLocation,useNavigate } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import logo from "../../assets/Logo/Logo-Full-Light.png"
 import {NavbarLinks} from "../../data/navbar-links"
-import { useDispatch, useSelector } from 'react-redux'
+import {useSelector } from 'react-redux'
 import { UserProfile } from './HomePage/UserProfile'
 import { apiConnector } from '../../axios/instance'
 import { categories } from '../../axios/services/apis'
@@ -20,10 +20,11 @@ export const Navbar = () => {
        try{
               const result = await apiConnector("GET",categories.CATEGORIES_API);
               console.log(result)
-              setSubLinks(result.data.data);
+              const newdata = result.data.data.filter((value) => value.courses.length > 0 );
+              setSubLinks(newdata);
        } catch(error) 
-       {
-          console.log("could not fetch the data form api");
+       {  
+          console.log("could not fetch the data form api",error);
        }  
     }
   
@@ -70,7 +71,7 @@ export const Navbar = () => {
            </nav>
            <div>
                {
-                token ? (<UserProfile />) : (<div className='flex gap-2'>
+                token ? (<UserProfile Link={Link} />) : (<div className='flex gap-2'>
                    <LoginBCom link="/login">Log in</LoginBCom>
                    <LoginBCom link="/signup">Sign Up</LoginBCom>
                 </div>)
