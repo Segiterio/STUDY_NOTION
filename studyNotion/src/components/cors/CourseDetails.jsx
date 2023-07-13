@@ -18,6 +18,7 @@ const CourseDetails = () => {
   const { courseId } = useParams();
   const navigate = useNavigate();
   const user = useSelector(state => state.profile);
+
   const {cart} = useSelector(state => state.cart);
   const dispatch = useDispatch();
   const [courseIdData, setCourseIdData] = useState(null);
@@ -30,9 +31,7 @@ const CourseDetails = () => {
     dispatch(setLoading(false));
     //get course by Category ID
   }, [courseId])
-  const {
-     courseName,courseContent,courseDescription,courseId:_id,instructor,whatYouwillLearn,ratingAndReviews,price,thumbnail,instructions,createdAt
-  } = courseIdData
+
   return (
     <div className='bg-richblack-900 pt-10'>
       {
@@ -42,8 +41,8 @@ const CourseDetails = () => {
             <div className='max-w-maxContent relative mx-auto flex w-11/12'>
               {/* course Details */}
               <div className='flex flex-col gap-2 border-r border-richblack-700 w-[75%]'>
-                <h1 className='text-3xl font-semibold text-richblack-5'>{courseName}</h1>
-                <p className='text-sm text-richblack-200'>{courseDescription}</p>
+                <h1 className='text-3xl font-semibold text-richblack-5'>{courseIdData?.courseName}</h1>
+                <p className='text-sm text-richblack-200'>{courseIdData?.courseDescription}</p>
                 <div className='flex items-center gap-3'>
 
                   <div className='flex gap-1 items-center'>
@@ -69,13 +68,13 @@ const CourseDetails = () => {
 
                 </div>
 
-                <p className='text-richblack-25 '>Created by {instructor.firstName + " " + instructor.lastName}</p>
+                <p className='text-richblack-25 '>Created by {courseIdData?.instructor.firstName + " " + courseIdData?.instructor.lastName}</p>
                 <div className='text-richblack-25 flex  gap-5'>
                   {/* created and language */}
                   <div className='flex items-center gap-3'>
                     {/* react icon add i */}
                     <BsInfoCircleFill />
-                    <div>Created At {createdAt}</div>
+                    <div>Created At {courseIdData?.createdAt}</div>
                   </div>
                   <div className='flex items-center gap-3'>
                     {/* react icon add earth  */}
@@ -87,17 +86,17 @@ const CourseDetails = () => {
               {/* card */}
               <div className='flex flex-col rounded-md absolute right-0 overflow-clip md:w-60 w-[20%] z-[3]'>
                 {/* image */}
-                <div><img src={thumbnail} alt={courseName} loading='lazy' className='object-cover'
+                <div><img src={courseIdData?.thumbnail} alt={courseIdData?.courseName} loading='lazy' className='object-cover'
                 /></div>
                 <div className='bg-richblack-700 flex flex-col gap-2 p-2'>
                   {/* price and buttons */}
                   <div className='flex flex-col gap-2'>
 
                     {/* price */}
-                    <div className='font-bold text-xl text-richblack-5'>Rs. {price}</div>
+                    <div className='font-bold text-xl text-richblack-5'>Rs. {courseIdData?.price}</div>
                     <div className='flex flex-col gap-2 font-semibold text-sm'>
                       <button className='bg-yellow-100 rounded-md text-richblack-900 p-2' onClick={() =>
-                      { const checkInCart = cart.find(value => value._id == courseId)
+                      { const checkInCart = cart.find(value => value._id == courseIdData._id)
                        if(!checkInCart)
                        {
                        dispatch(AddToCart(courseIdData));
@@ -149,7 +148,7 @@ const CourseDetails = () => {
                   {/*  course content */}
                   <div>
                     {
-                      courseContent.map((section) => (
+                      courseIdData?.courseContent.map((section) => (
                         <details key={section._id} className='border border-richblack-800 my-4'>
                           <summary className='flex  justify-between items-center px-5 py-2 bg-richblack-700'>
                             <div className='flex items-center gap-5'>
@@ -205,8 +204,8 @@ const CourseDetails = () => {
                 <div className=''>
                   <h2>Author</h2>
                   <div className='flex gap-5 items-center'>
-                    <img src={instructor?.image} alt={instructor?.firstName} className='w-20 h-20  rounded-full object-cover' loading='lazy' />
-                    <p className='capitalize'>{instructor?.firstName + " " + instructor?.lastName}</p>
+                    <img src={courseIdData?.instructor?.image} alt={courseIdData?.instructor?.firstName} className='w-20 h-20  rounded-full object-cover' loading='lazy' />
+                    <p className='capitalize'>{courseIdData?.instructor?.firstName + " " + courseIdData?.instructor?.lastName}</p>
                   </div>
                   {/* about of instructor */}
                   <p>I will be your lead trainer in this course. Within no time, I will help you to understand the subject in an easy manner. I have a huge experience in online training and recording videos. Let's get started!</p>
