@@ -149,11 +149,11 @@ exports.getAllCourses = async (req, res) => {
   }
 };
 //getCourseDetails
-exports.getCourseDetails = async (req, res) => {
+exports.getCourseDetails = async(req, res) => {
   try {
     //get id
     const { courseId } = req.body;
-    // console.log("sdfsaf", courseId);
+    console.log("sdfsaf", courseId);
     //find course details
     const courseDetails = await Course.findById(
       courseId).populate(

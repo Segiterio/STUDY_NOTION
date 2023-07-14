@@ -66,8 +66,8 @@ const Signup = () => {
     }
     //controlled and uncontrolled input read karo
     return (
-        <div >
-            <div className='rounded-full w-fit flex  items-center bg-richblack-800 p-1 my-2 shadow-[-1px_-1px_inset_rgba(255,255,250,0.1)]'>
+        <div className=''>
+            <div className='rounded-full w-fit flex items-center bg-richblack-800 p-1 my-2 shadow-[-1px_-1px_inset_rgba(255,255,250,0.1)]'>
                 <div className={`rounded-full px-5 py-1 cursor-pointer text-richblack-200 ${accountType == "Student" && "text-richblack-5 bg-richblack-700"}`}><div onClick={() => {
                     setAccountType("Student");
                 }}>Student</div></div>
@@ -76,7 +76,7 @@ const Signup = () => {
                 }}>Instructor</div></div>
             </div>
             <form onSubmit={handleSubmit} className="flex flex-col gap-2 " autoComplete='on'>
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col gap-2 text-xs lg:text-sm ">
                     <div className='flex justify-between'>
 
                         {/* firstName  */}

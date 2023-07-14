@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { GetUserEnrolledCourses } from '../../Functions/Userfun';
 import ProgressBar from "@ramonak/react-progress-bar"
 import {BsThreeDotsVertical} from "react-icons/bs"
+import { Link } from 'react-router-dom';
 
 const EnrolledCourses = () => {
   const { token } = useSelector(state => state.auth)
@@ -36,13 +37,14 @@ const EnrolledCourses = () => {
                   enrolledCourses.map((course)=>
                   (
                     <div key={course._id} className='grid grid-cols-[.6fr_.2fr_.2fr] gap-4 py-2 px-1'>
+                    <Link to={`/accessCourse/${course._id}`}>
                         <div className='flex items-center gap-3'>
                           <img src={course?.thumbnail} alt={course?.name} className=' w-36 border border-richblack-800 aspect-video rounded-md' loading='lazy' />
                           <div >
                             <h2 className='text-xl'>{course.courseName}</h2>
                             <p className='text-richblack-200'>{course.courseDescription.substring(0,100)+" ..."}</p>
                           </div>
-                        </div>
+                        </div></Link>
 
                         <div className='flex items-center'>
                             <p>Time 2:30 hrs</p>

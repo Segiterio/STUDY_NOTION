@@ -37,19 +37,19 @@ const Login = () => {
         }
     }
     return (
-        <form className="flex flex-col gap-5" autoComplete='on' onSubmit={handleLogin}>
+        <form className="flex flex-col gap-5" onSubmit={handleLogin}>
             <div className="flex flex-col gap-1">
-                <label htmlFor="email" className="text-sm text-richblack-5">Email Address <sup className="text-[#f00]">*</sup></label>
-                <input type="email" name="email" id="email" value={email} className="p-3 rounded-lg bg-richblack-800 text-richblack-200 focus:outline-none shadow-[-1px_-1px_inset_rgba(255,255,255,0.15)]" placeholder="Enter email address" onChange={(e) => {
+                <label htmlFor="email" className="text-xs lg:text-sm text-richblack-5">Email Address <sup className="text-[#f00]">*</sup></label>
+                <input type="email" name="email" id="email" value={email} className="p-3 rounded-lg bg-richblack-800 text-richblack-200 focus:outline-none shadow-[-1px_-1px_inset_rgba(255,255,255,0.15)] text-xs lg:text-sm " placeholder="Enter email address" onChange={(e) => {
                     setEmail(e.target.value)   
                 }
                 } />
             </div>
 
             <div className="flex flex-col gap-1">
-                <label htmlFor="password" className="text-sm text-richblack-5">Password <sup className="text-[#f00]">*</sup></label>
+                <label htmlFor="password" className="text-xs lg:text-sm  text-richblack-5">Password <sup className="text-[#f00]">*</sup></label>
                 <div className="relative">
-                    <input type={eye ? "password" : "text"} name="password" id="password" value={password} className="p-3 rounded-lg bg-richblack-800 text-richblack-200 focus:outline-none shadow-[-1px_-1px_inset_rgba(255,255,255,0.15)] w-full" placeholder="Enter password" onChange={(e) => {
+                    <input type={eye ? "password" : "text"} name="password" id="password" value={password} className="p-3 rounded-lg bg-richblack-800 text-richblack-200 focus:outline-none shadow-[-1px_-1px_inset_rgba(255,255,255,0.15)] w-full text-xs lg:text-sm " placeholder="Enter password" onChange={(e) => {
                         setPassword(e.target.value)
                     }
                     } />

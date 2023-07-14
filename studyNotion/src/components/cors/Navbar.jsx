@@ -38,10 +38,10 @@ export const Navbar = () => {
     }
   return (
     <div className='bg-richblack-800  py-1 border solid transparent;
-    border-radius: 10px; border-b-richblack-700 fixed w-full z-10'>
-        <div className='flex justify-between items-center max-w-maxContent mx-auto w-11/12'>   
+    border-radius: 10px; border-b-richblack-700 fixed w-full z-20'>
+        <div className='flex justify-between items-center max-w-maxContent mx-auto w-11/12 '>   
             <Link to="/"><img src={logo} alt="Logo" width={160} height={42} loading='lazy'/></Link>
-           <nav>
+           <nav className='hidden md:block text-xs lg:text-base'>
               <ul className='flex items-center gap-4'>
                   {
                     NavbarLinks.map((item,index) =>
@@ -71,7 +71,7 @@ export const Navbar = () => {
            </nav>
            <div>
                {
-                token ? (<UserProfile Link={Link} />) : (<div className='flex gap-2'>
+                token ? (<UserProfile Link={Link} />) : (<div className='hidden md:block '>
                    <LoginBCom link="/login">Log in</LoginBCom>
                    <LoginBCom link="/signup">Sign Up</LoginBCom>
                 </div>)

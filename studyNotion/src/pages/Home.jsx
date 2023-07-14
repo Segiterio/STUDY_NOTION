@@ -15,9 +15,9 @@ export const Home = () => {
   const para = 'With our online coding courses, you can learn at your own pace, from anywhere in the world, and get access to a wealth of resources, including hands-on projects, quizzes, and personalized feedback from instructors.';
 
   return (
-    <div className="w-screen flex flex-col bg-richblack-900 relative top-8">
+    <div className="flex flex-col bg-richblack-900 relative top-8">
       {/* section 1 */}
-      <div className='w-11/12 flex flex-col mt-5 mx-auto items-start sm:items-center  text-white gap-5 max-w-maxContent'>
+      <div className='w-11/12 flex flex-col mt-5 mx-auto items-start sm:items-center text-white gap-5 max-w-maxContent'>
         <Link to="/signup">
           <div className='bg-richblack-800 rounded-full flex justify-start px-4 py-2 hover:scale-95 duration-200 shadow-[0px_1px_0px_rgba(255,255,255,0.18)] border-4 border-richblack-800  '>
             <div className='text-richblack-200 animateSlide '>
@@ -25,11 +25,11 @@ export const Home = () => {
             </div>
           </div>
         </Link>
-        <div className="text-3xl sm:text-4xl font-bold text-richblack-5 
+        <div className="text-2xl sm:text-3xl font-bold text-richblack-5 md:text-center 
         "> Empower Your Future With <Highlighted color={"bg-gradient-to-r from-blue-100 to-caribbeangreen-100 bg-clip-text text-transparent"}>Coding Skills</Highlighted>
         </div>
 
-        <p className="font-medium text-richblack-200 sm:text-center ">{para}</p>
+        <p className="font-medium text-richblack-200 md:text-center ">{para}</p>
 
         <div className='flex gap-10'>
           <CLXbutton active={true} go={"/signup"}>Learn More</CLXbutton>
@@ -49,11 +49,11 @@ export const Home = () => {
 
         {/* coding section 1 */}
 
-        <div className='flex flex-col sm:flex-row sm:justify-between gap-10 sm:py-20 py-4 w-full'>
+        <div className='grid lg:grid-cols-2 gap-10 sm:py-20 py-4'>
           {/* Right part */}
-          <div className='flex flex-col gap-8 sm:w-1/2 justify-between'>
+          <div className='flex flex-col gap-8'>
             <div>
-              <div className="text-3xl sm:text-4xl capitalize font-bold text-richblack-5 
+              <div className="text-2xl sm:text-3xl  capitalize font-bold text-richblack-5 
         "> Unlock your <Highlighted color={"bg-gradient-to-r from-blue-100 to-caribbeangreen-100 bg-clip-text text-transparent"}>coding Potential </Highlighted>with our online courses
               </div>
 
@@ -70,7 +70,7 @@ export const Home = () => {
           </div>
 
           {/* Left part */}
-          <div className='sm:w-1/2 relative p-2 shadow-[-1px_-1px] shadow-richblack-400'>
+          <div className='relative p-2 shadow-[-1px_-1px] shadow-richblack-400'>
             {/* oval gradient */}
             <div className='absolute w-60 h-40 top-4 left-4 rounded-[230px/150px] blur-3xl hi'></div>
             {/* background behind TypeAnimation */}
@@ -81,14 +81,12 @@ export const Home = () => {
         </div>
         {/* bg-gradient-to-r from-pink-200 to-yellow-200  */}
         {/* coding section 2 */}
-        <div className='flex flex-col sm:flex-row-reverse justify-between gap-10 sm:py-20 w-full'>
-
-
+        <div className='grid lg:grid-cols-2 gap-10'>
           {/* Right part */}
-          <div className='flex flex-col gap-8 sm:w-1/2 justify-between'>
+          <div className='flex flex-col gap-8 justify-between lg:order-1'>
 
-            <div className='w-full'>
-              <div className="text-3xl sm:text-4xl font-bold text-richblack-5 
+            <div className=''>
+              <div className="text-2xl sm:text-3xl  font-bold text-richblack-5 
 ">Start <Highlighted color={"bg-gradient-to-r from-blue-100 to-caribbeangreen-100 bg-clip-text text-transparent"}>coding <br />in seconds </Highlighted></div>
               <div className="font-medium text-richblack-200 pt-4">
                 Go ahead, give it a try. Our hands-on learning environment means you'll be writing real code from your very first lesson.
@@ -101,7 +99,7 @@ export const Home = () => {
           </div>
 
           {/* Left part */}
-          <div className='sm:w-1/2 min-h-fit relative p-2 shadow-[-1px_-1px] shadow-richblack-400'>
+          <div className='min-h-fit relative p-2 shadow-[-1px_-1px] shadow-richblack-400'>
             {/* oval gradient */}
             <div className='absolute w-60 h-40 top-4 left-4 bg-gradient-to-r from-blue-200 to-blue-500 rounded-[230px/150px] blur-3xl'></div>
             {/* background behind TypeAnimation */}
@@ -114,7 +112,7 @@ export const Home = () => {
         {/* Unlock the power of code section */}
 
         <div>
-          <div className="text-3xl sm:text-4xl font-bold text-center text-richblack-5 
+          <div className="sm:text-3xl text-2xl font-bold text-center text-richblack-5 
 ">Unlock the <Highlighted color={"bg-gradient-to-r from-blue-100 to-caribbeangreen-100 bg-clip-text text-transparent"}>Power of Code </Highlighted></div>
           <div className="font-medium text-richblack-200 pt-4 text-center">
             Learn to Build Anything You Can Imagine
@@ -137,21 +135,23 @@ export const Home = () => {
 
         </div>
 
-        <div className='w-11/12 max-w-maxContent mx-auto py-20'>
+        <div className='w-11/12 max-w-maxContent mx-auto md:py-10'>
 
-          <div className='w-11/12 flex flex-col sm:flex-row sm:justify-between gap-10 py-5'>
-            <div className='sm:w-1/2 text-4xl font-semibold'>
+          <div className='w-11/12 flex flex-col md:flex-row sm:justify-between gap-10 py-5'>
+            <div className=' text-2xl sm:text-3xl font-semibold'>
               Get the skills you need for a <Highlighted color={"bg-gradient-to-r from-blue-100 to-caribbeangreen-100 bg-clip-text text-transparent"}>job that is in demand</Highlighted>
             </div>
-            <div className='sm:w-1/2 flex flex-col gap-10'>
+            <div className='flex flex-col gap-10'>
 
               <div>The modern StudyNotion is the dictates its own terms. Today, to be a competitive specialist requires more than professional skills.</div>
               <div className='self-start'>
                 <CLXbutton active={true} go={"/"}>Learn More</CLXbutton></div>
             </div>
           </div>
-          <TimeLine />
-          <Learings />
+        
+            <TimeLine />
+            <Learings />
+        
         </div>
       </div>
 
@@ -159,14 +159,12 @@ export const Home = () => {
 
       <div className='max-w-maxContent mx-auto w-11/12'>
 
-        <div className='py-20 flex flex-col sm:flex-row gap-10'>
-          <div className='sm:w-1/2 shadow-[-20px_-20px] shadow-white'>
-            <img src={Instructor} alt="Instructor" loading='lazy'/>
-          </div>
-          <div className='flex flex-col sm:w-1/2  justify-evenly'>
+        <div className='grid md:grid-cols-2 py-10 gap-4 border border-white'>
+            <img src={Instructor} alt="Instructor" loading='lazy' className='lg:shadow-[-20px_-20px_rgba(255,255,255)] shadow-[-10px_-10px_rgba(255,255,255)] place-self-center'/>
+          <div className='flex flex-col lg:justify-evenly border border-white'>
 
-            <div className='w-[90%]'>
-              <div className="text-3xl sm:text-4xl font-bold text-richblack-5 
+            <div className=''>
+              <div className="sm:text-3xl text-2xl font-bold text-richblack-5 
 ">Become an <Highlighted color={"bg-gradient-to-r from-blue-100 to-caribbeangreen-100"}> <br/> Instructor</Highlighted></div>
               <div className='text-richblack-300 my-5'>
                 Instructors from around the world teach millions of students on StudyNotion. We provide the tools and skills to teach what you love.

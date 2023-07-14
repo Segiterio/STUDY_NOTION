@@ -28,34 +28,34 @@ import { CheckToken } from './Functions/Userfun';
 import Catalog from './components/cors/Catalog';
 import CourseDetails from './components/cors/CourseDetails';
 import Contain from './Contain';
+import Index from './components/dashboard/AccessCourse';
 const App = () => {
-  const {token} = useSelector(state => state.auth);
+  const { token } = useSelector(state => state.auth);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   // use location is used form reset password token
   const user = useSelector(state => state.profile)
   const location = useLocation();
-  useEffect(()=>
-  {
-    token && CheckToken(dispatch,navigate,token);
-  },[]);
+  useEffect(() => {
+    token && CheckToken(dispatch, navigate, token);
+  }, []);
   return (
     <div>
       <Navbar />
       <Routes>
-        <Route path='/' element={<Contain/>}>
+        <Route path='/' element={<Contain />}>
           <Route index element={<Home />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/contact" element={<ContactUs />} />
-          <Route path="/catalog/courses/:categoryId" element={<Catalog />}/>
-          <Route path="/catalog/courses/:courseName/:courseId" element={<CourseDetails/>} />
+          <Route path="/catalog/courses/:categoryId" element={<Catalog />} />
+          <Route path="/catalog/courses/:courseName/:courseId" element={<CourseDetails />} />
         </Route>
 
         {/* reset password token ke openRoute me Sanka hai */}
         <Route path="/login" element={<OpenRoute><Loginpage /></OpenRoute>} />
         <Route path="/login/Reset-Password-Token" element={<OpenRoute><ResetPasswordToken /></OpenRoute>} />
         <Route path="/signup" element={<OpenRoute><SignUpPage /></OpenRoute>} />
-        <Route path="/signup/otp" element={<OpenRoute><Otpage /></OpenRoute>}/>
+        <Route path="/signup/otp" element={<OpenRoute><Otpage /></OpenRoute>} />
 
 
         <Route element={<Dashboard />}>
@@ -80,9 +80,15 @@ const App = () => {
         </Route>
 
         <Route path={`/update-password/${location.pathname.split("/").at(-1)}`} element={<SetPassword />} />
+
+        {user?.accountType == ACCOUNT_TYPE.STUDENT &&
+          <Route path="/accessCourse/:courseId" element={<Index />} />
+        }
+
+
         <Route path={"*"} element={<ErrorPage />} />
       </Routes>
-      <ToastContainer autoClose={2000}  />
+      <ToastContainer autoClose={2000} />
     </div>
   )
 }

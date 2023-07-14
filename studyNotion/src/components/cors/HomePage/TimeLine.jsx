@@ -29,8 +29,8 @@ export const TimeLine = () => {
     }]
 
     return ( 
-        <div className='flex flex-col md:flex-row lg:justify-between justify-center gap-5 sm:flex-wrap items-center p-6 border'>
-            <div className='flex border'>
+        <div className='grid lg:grid-cols-2 lg:gap-0 gap-10 justify-center py-10'>
+            <div className='flex sm:place-self-center lg:place-self-auto'>
                 <div className='flex flex-col gap-12 '>
                     {
                         timeLineData.map((item, index) => {
@@ -52,21 +52,21 @@ export const TimeLine = () => {
                 </div>
             </div>
 
-            <div className='relative border'>
+            <div className='relative'>
                 <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full bg-blue-300 h-[70%] rounded-[350px/180px] blur-2xl '>
                 </div>
 
                 <img src={TimelineImage} alt="Time Line didi" className='shadow-[20px_20px] relative  shadow-white' loading='lazy' />
 
-                <div className='absolute flex w-[80%] justify-around left-1/2 -translate-x-1/2 -translate-y-1/2 bg-caribbeangreen-700 md:p-10 p-2'>
-                    <div className='flex items-center md:gap-5 gap-1'>
-                        <div className='font-bold flex gap-5 md:text-4xl text-white'>10</div>
+                <div className='absolute flex w-[80%] justify-around left-1/2 -translate-x-1/2 -translate-y-1/2 bg-caribbeangreen-700 md:p-5 p-2'>
+                    <div className='flex items-center md:gap-2 gap-1'>
+                        <div className='font-bold flex gap-3 sm:text-3xl text-2xl text-white'>10</div>
                         <div className='leading-4 md:text-[14px] text-[10px] text-caribbeangreen-300'>YEARS <br />EXPERIENCES</div>
                     </div>
                     <div className='w-[1px]  bg-caribbeangreen-500 self-center h-5'>
                     </div>
                     <div className='flex items-center md:gap-5 gap-1'>
-                        <div className='font-bold flex gap-5 md:text-4xl text-white'>250</div>
+                        <div className='font-bold flex gap-5  text-2xl sm:text-3xl text-white'>250</div>
                         <div className='leading-4 md:text-[14px] text-[10px] text-caribbeangreen-300'>TYPES OF <br /> COURSES</div>
                     </div>
                 </div>

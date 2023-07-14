@@ -113,17 +113,19 @@ export const getCategoryPageDetails = async(categoryId,setCourseData,dispatch) =
     }
  }
 
- export const getCourseDetails = async(courseId,setCourseIdData) =>
-{
+ export const getCourseDetails = async(courseId) =>
+{  let courseData = null;
    try{
        const response = await apiConnector("POST",coursePoints.GET_COURSE_DETAILS, {courseId})
        console.log("response of Course id",response)
-       setCourseIdData(response.data.data);
+       courseData = response.data.data;
    }
    catch(error)
     {
        console.log("error in course category by Id", error)
     }
+    console.log("course data of getCourseDetails", courseData);
+    return courseData
  }
 
 
@@ -248,3 +250,5 @@ async function verifyPayment(bodyData,token,navigate,dispatch)
      toast.dismiss(toastId)
      dispatch(setPaymentLoading(false));
 }
+
+//access course 

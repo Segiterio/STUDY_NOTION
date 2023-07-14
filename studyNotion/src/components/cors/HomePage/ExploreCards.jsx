@@ -11,9 +11,9 @@ export default function ExploreCards() {
     const cards = HomePageExplore[card].courses;
     const [subCard, setSubCard] = useState(0);
 
-    return (<div className="flex flex-col font-inter relative top-16 max-w-maxContent ">
+    return (<div className="flex flex-col font-inter relative top-16 max-w-maxContent">
 
-        <div className="flex border gap-5 rounded-full p-1 self-center">
+        <div className="flex flex-col items-center md:flex-row border border-richblack-600 gap-1 sm:gap-2 md:gap-5 text-xs lg:text-base rounded-md md:rounded-full p-1 self-center text-richblack-50">
             {tags.map((tag, index) => {
                 let clickedStyle = "";
                 if (card === index) {
@@ -31,7 +31,7 @@ export default function ExploreCards() {
             })}
         </div>
 
-        <div className="flex flex-col items-center mt-10 gap-5 sm:flex-row">
+        <div className="grid gap-3 lg:grid-cols-3 place-items-center py-10">
 
             {
                 cards.map((item, index) => {
@@ -50,17 +50,17 @@ export default function ExploreCards() {
                         textF = textD;
                     }
 
-                    return (<div key={index} className={"flex flex-col w-80  justify-between gap-10 duration-300 cursor-pointer " + shadow + bg} onClick={() => {
+                    return (<div key={index} className={"flex flex-col justify-between gap-10 sm:w-2/3 lg:w-full duration-300 cursor-pointer " + shadow + bg} onClick={() => {
                         setSubCard(index);
                     }}>
 
                         <div className="p-4">
-                            <p className={" text-xl font-bold mb-2 " + headingText}>{item.heading}</p>
-                            <p className={textD}>{item.description}</p>
+                            <p className={"text-base sm:text-lg font-bold mb-2 " + headingText}>{item.heading}</p>
+                            <p className={textD + " text-sm"}>{item.description}</p>
                         </div>
                         <div className={"flex justify-between border-t border-dashed p-4 " + textF}>
-                            <div className="flex items-center gap-2"><HiUsers /> {item.level}</div>
-                            <div className="flex items-center gap-2 " ><ImTree size={".8rem"} /> {item.lessionNumber} Lesson</div>
+                            <div className="flex items-center gap-2 text-sm"><HiUsers /> {item.level}</div>
+                            <div className="flex items-center gap-2 text-sm" ><ImTree size={".8rem"} /> {item.lessionNumber} Lesson</div>
                         </div>
                     </div>)
                 })

@@ -26,8 +26,12 @@ const CourseDetails = () => {
   console.log("Paamas", courseId);
   useEffect(() => {
     dispatch(setLoading(true))
-    console.log("Category ID ", courseId);
-    (async () => await getCourseDetails(courseId, setCourseIdData))();
+    console.log("Category ID", courseId);
+    async function callgetCourseDetails() {
+    const result = await getCourseDetails(courseId);
+    setCourseIdData(result);
+  }
+    callgetCourseDetails();
     dispatch(setLoading(false));
     //get course by Category ID
   }, [courseId])
@@ -224,3 +228,5 @@ export default CourseDetails
 
 // Basic knowledge of HTML and CSS: JavaScript is a scripting language that is used to make web pages more interactive. HTML and CSS are the languages used to create and style web pages. Having a basic understanding of these languages will help you understand how JavaScript works and how to use it to interact with HTML and CSS.
 // Some familiarity with programming concepts: JavaScript is a programming language, so some familiarity with programming concepts will be helpful. This includes concepts such as variables, loops, and functions.
+
+// add loader in this page because it takes time to laod
