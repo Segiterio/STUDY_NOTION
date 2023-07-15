@@ -28,7 +28,7 @@ import { CheckToken } from './Functions/Userfun';
 import Catalog from './components/cors/Catalog';
 import CourseDetails from './components/cors/CourseDetails';
 import Contain from './Contain';
-import Index from './components/dashboard/AccessCourse';
+import Index from './components/dashboard/AccessCourse/Index';
 const App = () => {
   const { token } = useSelector(state => state.auth);
   const navigate = useNavigate();
