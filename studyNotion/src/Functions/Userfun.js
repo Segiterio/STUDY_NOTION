@@ -88,7 +88,7 @@ export const GetUserEnrolledCourses = async(token) =>
          const resposne = await apiConnector("GET", profilePointes.GET_ENROLLED_COURSES,null,{
             Authorization:`Bearer ${token}`
          });
-         console.log("GetUserEnrolledCouses response",resposne)
+         console.log("GetUserEnrolledCouses response",resposne.data.data)
          toast.dismiss(toastId);
         return resposne.data.data;
      }catch(error)

@@ -30,7 +30,7 @@ export const TimeLine = () => {
 
     return ( 
         <div className='grid lg:grid-cols-2 lg:gap-0 gap-10 justify-center py-10'>
-            <div className='flex sm:place-self-center lg:place-self-auto'>
+            <div className='flex place-self-center lg:place-self-auto'>
                 <div className='flex flex-col gap-12 '>
                     {
                         timeLineData.map((item, index) => {

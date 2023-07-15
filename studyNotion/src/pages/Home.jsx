@@ -15,7 +15,7 @@ export const Home = () => {
   const para = 'With our online coding courses, you can learn at your own pace, from anywhere in the world, and get access to a wealth of resources, including hands-on projects, quizzes, and personalized feedback from instructors.';
 
   return (
-    <div className="flex flex-col bg-richblack-900 relative top-8">
+    <div className="flex flex-col bg-richblack-900 relative pt-10">
       {/* section 1 */}
       <div className='w-11/12 flex flex-col mt-5 mx-auto items-start sm:items-center text-white gap-5 max-w-maxContent'>
         <Link to="/signup">

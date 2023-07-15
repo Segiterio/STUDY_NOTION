@@ -81,11 +81,9 @@ const App = () => {
 
         <Route path={`/update-password/${location.pathname.split("/").at(-1)}`} element={<SetPassword />} />
 
-        {user?.accountType == ACCOUNT_TYPE.STUDENT &&
-          <Route path="/accessCourse/:courseId" element={<Index />} />
+        {user?.accountType === ACCOUNT_TYPE.STUDENT &&
+          <Route path="/accessCourse/:courseId/section/:sectionId/subSection/:subSectionId" element={<Index />} />
         }
-
-
         <Route path={"*"} element={<ErrorPage />} />
       </Routes>
       <ToastContainer autoClose={2000} />

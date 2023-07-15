@@ -1,61 +1,44 @@
-import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import { useParams } from 'react-router-dom'
-import { getCourseDetails } from '../../../Functions/Userfun'
-import { useDispatch } from 'react-redux'
-import { setLoading } from '../../../Redux/Slices/auth'
-const ContentSideBar = ({ setReviewModal }) => {
+import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { AiFillCaretDown, AiFillCaretUp } from "react-icons/ai"
+import { setCurrentVideo } from '../../../Redux/Slices/accessCourse';
+
+const ContentSideBar = () => {
+  const { courseContent } = useSelector(state => state.accessCourse);
   const dispatch = useDispatch();
-  const [showSubSection, setShowSubSection] = useState([])
-  const { courseId } = useParams();
-  const [courseContentdata, setCourseContent] = useState(null);
-  
-  useEffect(() => {
-    dispatch(setLoading(true))
-    async function callgetCourseDetails() {
-      const result = await getCourseDetails(courseId);
-      console.log("dta", result)
-      setCourseContent(result?.courseContent);
-    };
-    callgetCourseDetails();
-    dispatch(setLoading(false));
-  }, []);
-  console.log("hello 3", courseContentdata)
+  const [openSection, setOpenSection] = useState([]);
   return (
-    <div>
+    <div className='bg-richblack-800 text-richblack-200 pt-8 overflow-y-auto'>
       {
-        courseContentdata.map((section) => (
-          <div className='' key={section._id}>
-            <div>
+        courseContent.map((section) => {
+          return (<div key={section._id} className=''>
+            <div className='flex items-center justify-between bg-richblack-600 p-2'>
               <div>{section.sectionName}</div>
-              <div>
-                <div></div>
-                <div onClick={() => {
-                  const open = showSubSection.includes(section._id)
-                  if (open) {
-                    setShowSubSection(showSubSection.filter((value) => value._id != section._id))
-                  }
-                  else {
-                    setShowSubSection([...showSubSection, section._id])
-                  }
-                }}>
-                  <BiChevronDown />
-                </div>
+              <div className='cursor-pointer' onClick={() => {
+                !openSection.includes(section._id) ? setOpenSection([...openSection, section._id]) : setOpenSection(openSection.filter(id => {
+                  id != section._id;
+                    }
+                  )
+                )
+              }}>
+                {openSection.includes(section._id) ? <AiFillCaretDown /> : <AiFillCaretUp />}
               </div>
             </div>
-            {showSubSection.includes(section._id) && <div>
-              {
-                section.subSection.map((sSection) => (
-                  <Link to={``}>
-                    <div>{sSection.title}</div>
-                  </Link>
-                )
-                )
-              }
-            </div>}
-          </div>
-        )
-        )
+            {
+              openSection.includes(section._id) && section.subSection.map((subSection) =>
+              (<div className='transition-all duration-500  cursor-pointer px-4 py-2' key={subSection._id}>
+                <div>
+                  <form className='flex gap-2'>
+                    <input type="checkbox" name="" id="" />
+                    <div className='text-sm' onClick={() => {
+                        dispatch(setCurrentVideo(subSection.videoUrl));
+                    }}>{subSection.title}</div>
+                  </form>
+                </div>
+              </div>))
+            }
+          </div>)
+        })
       }
     </div>
   )

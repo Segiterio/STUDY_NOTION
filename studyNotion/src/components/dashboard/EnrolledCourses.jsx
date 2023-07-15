@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 const EnrolledCourses = () => {
   const { token } = useSelector(state => state.auth)
 
-  const [enrolledCourses, setEnrolledCourses] = useState(null);
+  const [enrolledCourses, setEnrolledCourses] = useState([]);
 
   const getEnrolledCourses = async () => {
     const result = await GetUserEnrolledCourses(token);
@@ -37,7 +37,7 @@ const EnrolledCourses = () => {
                   enrolledCourses.map((course)=>
                   (
                     <div key={course._id} className='grid grid-cols-[.6fr_.2fr_.2fr] gap-4 py-2 px-1'>
-                    <Link to={`/accessCourse/${course._id}`}>
+                    <Link to={`/accessCourse/${course._id}/section/${course?.courseContent[0]?._id}/subsection/${course?.courseContent[0]?.subSection[0]._id}`}>
                         <div className='flex items-center gap-3'>
                           <img src={course?.thumbnail} alt={course?.name} className=' w-36 border border-richblack-800 aspect-video rounded-md' loading='lazy' />
                           <div >

@@ -5,6 +5,7 @@ import cartReducer from "./Slices/cart"
 import courseReducer from "./Slices/course"
 import sectionReducer from "./Slices/section"
 import subSectionReducer from "./Slices/subsection"
+import accessCourseReducer from "./Slices/accessCourse";
 
 export const store = configureStore({
     reducer:{
@@ -14,5 +15,6 @@ export const store = configureStore({
          course:courseReducer,
          section:sectionReducer,
          subSection:subSectionReducer,
+         accessCourse:accessCourseReducer,
     },
 })
