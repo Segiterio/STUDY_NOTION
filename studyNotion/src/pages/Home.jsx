@@ -159,9 +159,9 @@ export const Home = () => {
 
       <div className='max-w-maxContent mx-auto w-11/12'>
 
-        <div className='grid md:grid-cols-2 py-10 gap-4 border border-white'>
+        <div className='grid md:grid-cols-2 py-10 gap-4 '>
             <img src={Instructor} alt="Instructor" loading='lazy' className='lg:shadow-[-20px_-20px_rgba(255,255,255)] shadow-[-10px_-10px_rgba(255,255,255)] place-self-center'/>
-          <div className='flex flex-col lg:justify-evenly border border-white'>
+          <div className='flex flex-col lg:justify-evenly'>
 
             <div className=''>
               <div className="sm:text-3xl text-2xl font-bold text-richblack-5 
