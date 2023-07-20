@@ -121,7 +121,7 @@ const Catalog = () => {
 
                       <div className='flex'>
                         <Swiper
-                          slidesPerView={3}
+                          slidesPerView={1}
                           autoplay={
                             {
                               delay: 2000,

@@ -18,6 +18,7 @@ const CourseDetails = () => {
   const { courseId } = useParams();
   const navigate = useNavigate();
   const user = useSelector(state => state.profile);
+  const slideDown = useRef(null);
 
   const {cart} = useSelector(state => state.cart);
   const dispatch = useDispatch();
@@ -150,14 +151,19 @@ const CourseDetails = () => {
 
                   </div>
                   {/*  course content */}
-                  <div>
+                  <div className='mt-3'>
                     {
                       courseIdData?.courseContent.map((section) => (
-                        <details key={section._id} className='border border-richblack-800 my-4'>
-                          <summary className='flex  justify-between items-center px-5 py-2 bg-richblack-700'>
-                            <div className='flex items-center gap-5'>
+                        <div key={section._id} className='border border-richblack-800 max-h-[50px] overflow-hidden transition-all duration-700'>
+                          <div className='flex justify-between items-center px-5 py-2 cursor-pointer bg-richblack-700 ' onClick={(e) => {
+                          e.currentTarget.parentNode.classList.toggle("max-h-[250px]")
+                          e.currentTarget.children[0].children[0].classList.toggle(
+                            "rotate-180"
+                          );
+      }} >
+                            <div className='flex items-center gap-5 ' >
                               {/* icons arrow add */}
-                              <div className='downUp'>
+                              <div className='transition-all duration-700'  >
                                  <RiArrowUpSLine/>
                                     </div>
                               
@@ -171,12 +177,11 @@ const CourseDetails = () => {
 
                             </div>
 
-                          </summary>
-
-                          <div className='px-5 py-2 flex flex-col '>
+                          </div>
+                       <div className='px-8 py-2'>
                             {section.subSection.map((subSection) => (
-                              <details key={subSection._id}>
-                                <summary className='flex justify-between px-5'>
+                              <div  key={subSection._id}>
+                                <div className='flex justify-between px-5 '>
                                   <div className='flex items-center gap-3'>
                                     {/* tv icons */}
                                     <PiTelevisionSimpleDuotone />
@@ -186,16 +191,14 @@ const CourseDetails = () => {
 
                                   </div>
                                   <div>{Number(subSection?.timeDuration).toFixed(2)}</div>
-                                </summary>
-                                <div className='px-16'>
-                                  {subSection?.description}
                                 </div>
-                              </details>
+                                {/* <div className='px-16 hidden'>
+                                  {subSection?.description}
+                                </div> */}
+                              </div>
                             ))}
-
-                          </div>
-
-                        </details>
+                            </div>
+                        </div>
                       ))
                     }
 

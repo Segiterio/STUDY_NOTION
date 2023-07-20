@@ -27,7 +27,7 @@ export const Coding = () => {
         ={[typeSentence,1000,""
         ]}
         wrapper='div'
-        className='whitespace-pre '
+        className='whitespace-pre first-line:text-yellow-100 '
         cursor={true} repeat={Infinity} omitDeletionAnimation={true}  />
             </div>    
     </div>

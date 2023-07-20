@@ -45,11 +45,11 @@ exports.capturePayment = async(req,res)=> {
          //        message:"Instructor can't Buy course"
          //     })
          //  }
-//check user is already enrolled in any course if true return successfalse
+//check user is already enrolled in any course if true return success false
 
-          for(let x=0 ; x < student.courses.length ; x++)
+          for(let x=0 ; x < coursesId.length ; x++)
           {
-            let courseIdOfObjectType = new mongoose.Types.ObjectId(student.courses[x]);
+            let courseIdOfObjectType = new mongoose.Types.ObjectId(coursesId[x]);
              if(student.courses.includes(courseIdOfObjectType))
              {
                  return res.status(400).json({
