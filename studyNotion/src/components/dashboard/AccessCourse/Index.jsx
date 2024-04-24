@@ -16,13 +16,19 @@ const Index = () => {
   {
      (async function() {
          const data = await getCourseDetails(courseId);
-         dispatch(setAccessCourseData(data?.courseContent));
-          dispatch(setCurrentVideo(data?.courseContent[0].subSection[0].videoUrl))
+         console.log("course content data", data);
+           if(data) {
+            dispatch(setAccessCourseData(data?.courseContent));
+            dispatch(setCurrentVideo(data?.courseContent[0].subSection[0].videoUrl))
+           }
+          else {
+             console.log("data is null ",data)
+          }
        })();
   },[courseId])
   return ( 
-    <div className=''>
-      <div className='grid grid-cols-[.2fr_1fr] h-screen'>
+    <div className='bg-richblack-900'>
+      <div className='grid grid-cols-[.2fr_.8fr] min-h-screen'>
         <ContentSideBar
          setReviewModal={setReviewModal} />
         <VideoCompnent /> 

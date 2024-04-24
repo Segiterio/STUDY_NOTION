@@ -29,6 +29,7 @@ import Catalog from './components/cors/Catalog';
 import CourseDetails from './components/cors/CourseDetails';
 import Contain from './Contain';
 import Index from './components/dashboard/AccessCourse/Index';
+import ScrollToTop from './Functions/utils';
 const App = () => {
   const { token } = useSelector(state => state.auth);
   const navigate = useNavigate();
@@ -42,6 +43,7 @@ const App = () => {
   return (
     <div>
       <Navbar />
+      <ScrollToTop />
       <Routes>
         <Route path='/' element={<Contain />}>
           <Route index element={<Home />} />

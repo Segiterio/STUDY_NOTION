@@ -8,6 +8,8 @@ pnpm-debug.log*
 lerna-debug.log*
 
 
+*.zip
+
 
 
 node_modules

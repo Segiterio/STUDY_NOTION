@@ -6,7 +6,7 @@ const MyProfile = () => {
   const user = useSelector(state => state.profile)
   const navigate = useNavigate();
   return (
-    <div >
+    <div className='max-w-[1000px] mx-auto' >
       <h1 className='font-bold text-2xl text-white'>My Profile</h1>
       <div className='flex mt-5 flex-col gap-10'>
         <div className='flex justify-between items-center gap-2 bg-richblack-800 p-5 rounded-lg border border-richblack-700'>

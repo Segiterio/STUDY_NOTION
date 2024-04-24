@@ -8,7 +8,7 @@ const ContentSideBar = () => {
   const dispatch = useDispatch();
   const [openSection, setOpenSection] = useState([]);
   return (
-    <div className='bg-richblack-800 text-richblack-200 pt-8 overflow-y-auto'>
+    <div className='bg-richblack-800 text-richblack-200 pt-8 overflow-y-auto min-w-fit '>
       {
         courseContent.map((section) => {
           return (<div key={section._id} className=''>

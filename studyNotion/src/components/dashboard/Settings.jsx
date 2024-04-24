@@ -59,7 +59,7 @@ const Settings = () => {
   }
 
   return (
-    <div className='flex flex-col gap-4 my-5'>
+    <div className='flex flex-col gap-4 my-5 max-w-[1000px] mx-auto'>
       <h2 className='text-3xl font-semibold text-richblack-5'>Edit Profile</h2>
       <div className='flex bg-richblack-800 gap-5 p-4 rounded-lg border border-richblack-700 '>
         <img src={previewSource || user?.image} alt={`profile img`} className=' w-16 h-16 rounded-full object-cover' loading='lazy' />

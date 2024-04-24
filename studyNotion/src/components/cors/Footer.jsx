@@ -75,7 +75,7 @@ const Footer = () => {
 
 
                 <div className="p-2 flex items-center gap-2">
-                    Made with <AiFillHeart color="red" /> Akash CodeHelp © 2023 Studynotion
+                    Made with <AiFillHeart color="red" /> Akash © 2023 Studynotion
                 </div>
 
             </div>

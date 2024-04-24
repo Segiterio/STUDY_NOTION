@@ -6,7 +6,7 @@ import CourseCart from './CourseCart';
 const Cart = () => { 
   const {total, totalItem,cart} = useSelector(state => state.cart);
   return (
-    <div className='flex flex-col'>
+    <div className='flex flex-col max-w-[1000px] mx-auto'>
        <h1 className='text-2xl text-richblack-5'>Cart</h1> 
         {
            totalItem > 0 ? (

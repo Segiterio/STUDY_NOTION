@@ -19,7 +19,7 @@ const Dashboard = () => {
         <SideBar setLogModal={setLogModal} />
       </div>
       <div className='text-richblack-900 font-bold bg-richblack-900 pt-10 flex w-full'>
-        <div className='max-w-[1000px] mx-auto w-11/12'>
+        <div className='outlet'>
           <Outlet/>
         </div>
       </div></> }

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { GetUserEnrolledCourses } from '../../Functions/Userfun';
+import { CalculateCourseTime, GetUserEnrolledCourses } from '../../Functions/Userfun';
 import ProgressBar from "@ramonak/react-progress-bar"
 import {BsThreeDotsVertical} from "react-icons/bs"
 import { Link } from 'react-router-dom';
@@ -21,7 +21,7 @@ const EnrolledCourses = () => {
   }, [])
 
   return (
-    <div className='text-white flex flex-col'>
+    <div className='text-white flex flex-col max-w-[1000px] mx-auto'>
       <h1 className='text-2xl'>Enrolled Courses</h1>
        {
          !enrolledCourses ? <div className='my-auto self-center text-4xl font-normal text-richblack-600'>Loading...{console.log("loading")}</div> 
@@ -47,7 +47,7 @@ const EnrolledCourses = () => {
                         </div></Link>
 
                         <div className='flex items-center'>
-                            <p>Time 2:30 hrs</p>
+                            <p>{CalculateCourseTime(course?.courseContent)}</p>
                         </div>
                         
                         <div className='flex items-center'>
